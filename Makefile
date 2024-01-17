@@ -33,13 +33,17 @@ include $(DEVKITARM)/3ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	3ds_space_game
 BUILD		:=	build
-SOURCES		:=	source
+SOURCES		:=	source source/world
 DATA		:=	data
-INCLUDES	:=	include
+INCLUDES	:=	source
 GRAPHICS	:=	gfx
-GFXBUILD	:=	$(BUILD)
-#ROMFS		:=	romfs
-#GFXBUILD	:=	$(ROMFS)/gfx
+#GFXBUILD	:=	$(BUILD)
+ROMFS		:=	romfs
+GFXBUILD	:=	$(ROMFS)/gfx
+
+APP_TITLE        :=  3DS Space Game
+APP_AUTHOR       :=  DJ_Laser
+APP_DESCRIPTION  :=  A small game I made for my school project
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -57,7 +61,7 @@ CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lctru -lm
+LIBS	:= -lcitro2d -lcitro3d -lctru -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
@@ -162,6 +166,8 @@ endif
 
 #---------------------------------------------------------------------------------
 all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
+	@echo $(CFILES)
+	@echo $(OFILES)
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 $(BUILD):
@@ -193,7 +199,7 @@ else
 
 #---------------------------------------------------------------------------------
 # main targets
-#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------:
 $(OUTPUT).3dsx	:	$(OUTPUT).elf $(_3DSXDEPS)
 
 $(OFILES_SOURCES) : $(HFILES)
@@ -227,3 +233,4 @@ $(OUTPUT).elf	:	$(OFILES)
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------
+
