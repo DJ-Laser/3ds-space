@@ -1,3 +1,3 @@
-# template
+# 3ds-space
 
-This is a template for starting new 3DS libctru projects.
+A simple space game for the nintendo 3ds
