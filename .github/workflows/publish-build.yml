@@ -1,0 +1,28 @@
+name: publish build to release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    container: devkitpro/devkitarm:latest
+    
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - name: Upload 3dsx to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./*.3dsx
+        asset_name: Game File (3dsx)
+        tag: ${{ github.ref }}
+        file_glob: true
