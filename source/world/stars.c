@@ -29,6 +29,6 @@ void drawStars(const star array[], size_t numStars, const camera *cam)
         const star *item = &array[i];
         int x = ((int)(item->px + cam->x / (STAR_SCROLL_SPEED - SCROLL_RADIUS_MUL * item->radius)) % STAR_MAP_SIZE + STAR_MAP_SIZE) % STAR_MAP_SIZE;
         int y = ((int)(item->py + cam->y / (STAR_SCROLL_SPEED - SCROLL_RADIUS_MUL * item->radius)) % STAR_MAP_SIZE + STAR_MAP_SIZE) % STAR_MAP_SIZE;
-        C2D_DrawCircleSolid(x, y, -1.0f, item->radius, C2D_Color32(0xFF, 0xFF, 0xFF, 0xFF));
+        C2D_DrawCircleSolid(x, y, 0, item->radius, C2D_Color32(0xFF, 0xFF, 0xFF, 0xFF));
     }
 }

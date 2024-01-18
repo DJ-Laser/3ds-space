@@ -1,0 +1,3 @@
+--atlas -f rgba8888 -z auto
+ui/radar-screen.png
+ui/radar-arrow.png
