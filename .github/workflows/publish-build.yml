@@ -1,5 +1,8 @@
 name: publish build to release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
