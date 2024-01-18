@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    container: devkitpro/devkitppc:latest
+    container: devkitpro/devkitarm:latest
       
 
     runs-on: ubuntu-latest
