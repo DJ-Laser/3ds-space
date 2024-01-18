@@ -23,6 +23,6 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./*.3dsx
-        asset_name: Game File (3dsx)
         tag: ${{ github.ref }}
         file_glob: true
+        overwrite: true
